@@ -1,0 +1,17 @@
+name: Build gh-pages site
+on: [push]
+
+jobs:
+  build:
+    name: Build gh-pages site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.x'
+      - run: python --version
+      - run: pip install -r requirements.txt
+      - run: python build.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
