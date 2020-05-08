@@ -8,7 +8,9 @@ import jinja2
 jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 template = jinja_env.get_template('index.html.jinja')
-content = template.render(timestamp=datetime.utcnow().isoformat())
+content = template.render(
+    timestamp=datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
+)
 
 gh = Github(os.environ['GITHUB_TOKEN'])
 repo = gh.get_repo(os.environ['GITHUB_REPOSITORY'])
