@@ -8,7 +8,6 @@ on:
       - master
   schedule:
     - cron:  '0 0 * * *'
-
 jobs:
   build:
     name: Build gh-pages site
